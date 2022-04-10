@@ -1,6 +1,6 @@
 # Hola Mundo
 - Compilador: MinGW
-- Version: 17
+- Version C++: 17
 
 # Pasos en linea de comandos:
 
