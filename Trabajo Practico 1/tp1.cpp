@@ -9,9 +9,9 @@ int main()
 
     // Consigna tp: uso de assert con estos tipos de datos bool,char, unsigned, int, double, y string.
 
-	assert(2==1+1);
-	//prueba de tipo de dato bool
-	assert(true);
+    assert(2==1+1);
+    //prueba de tipo de dato bool
+    assert(true);
     assert(false==false);
     assert(true!=false);
     assert(not false);
@@ -39,10 +39,6 @@ int main()
     //Pruebas de tipo Char
     assert('a' == 'a');
     assert('o' -32 == 'O');
-
-
-
-
 
     // Pruebas de tipo unsigned
     assert(120/10==12);
