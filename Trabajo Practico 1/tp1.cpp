@@ -1,5 +1,5 @@
 #include<cassert>
-#include<iostream>
+//#include<iostream>
 //#include<iomanip>
 #include<string>
 using namespace std::literals;
@@ -9,9 +9,9 @@ int main()
 
     // Consigna tp: uso de assert con estos tipos de datos bool,char, unsigned, int, double, y string.
 
-    assert(2==1+1);
-    //prueba de tipo de dato bool
-    assert(true);
+	assert(2==1+1);
+	//prueba de tipo de dato bool
+	assert(true);
     assert(false==false);
     assert(true!=false);
     assert(not false);
@@ -39,10 +39,12 @@ int main()
     //Pruebas de tipo Char
     assert('a' == 'a');
     assert('o' -32 == 'O');
+    assert('8' != '1' + '7');
+
 
     // Pruebas de tipo unsigned
-    assert(120/10==12);
-    assert(5+5 == 10);
+    assert(120u/10u==12u); 
+    assert(5u+5u == 10u);
 
 
 }
