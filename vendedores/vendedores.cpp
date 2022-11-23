@@ -12,21 +12,15 @@ Sales totalSalesAmount{};
 
 void readDataFromFile();
 void openFileAndSendItToStandardOutput();
+int calculateAverageByAGivenRegion(int);
 
 
 int main(){
 
 	readDataFromFile();
 	openFileAndSendItToStandardOutput();
-
-	int region{};
-	int salesSumBySeller;
-	const int NUMBER_OF_SELLERS_IN_FILE = totalSalesAmount.at(region).size();
-
-	for(int seller{}; seller < totalSalesAmount.at(seller).size(); seller++) 
-		for(int month{}; month < MONTHS_IN_A_YEAR; month++)
-			salesSumBySeller += totalSalesAmount.at(region).at(seller).at(month);
-	std::cout << "The average sale by region is: " << salesSumBySeller / totalSalesAmount.at(region).size(); 
+	calculateAverageByAGivenRegion(0);
+	
 	
 }
 
@@ -78,4 +72,15 @@ void openFileAndSendItToStandardOutput() {
   	outputFileStream.close();
 }
 
+int calculateAverageByAGivenRegion(int region) {
+
+	int salesSumBySeller;
+	const int NUMBER_OF_SELLERS_IN_A_GIVEN_REGION = totalSalesAmount.at(region).size();
+
+	for(int seller{}; seller < NUMBER_OF_SELLERS_IN_A_GIVEN_REGION; seller++) 
+		for(int month{}; month < MONTHS_IN_A_YEAR; month++)
+			salesSumBySeller += totalSalesAmount.at(region).at(seller).at(month);
+
+	return salesSumBySeller / NUMBER_OF_SELLERS_IN_A_GIVEN_REGION;
+}
 // g++ vendedores.cpp -o output -std=c++2a
