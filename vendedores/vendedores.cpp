@@ -21,8 +21,8 @@ int main(){
 
 	readDataFromFile();
 	printResultsAndWriteThemInFile();
-	calculateAverageSalesByAGivenRegion(0);
 	printMaximimumSale();
+	calculateAverageSalesByAGivenRegion(0);
 
 }
 
@@ -30,7 +30,7 @@ void readDataFromFile() {
 	std::ifstream inputFileStream;
 	inputFileStream.open("TestVendedores.txt");
 
-	int month, seller, region{};
+	int month, seller, region;
 
 	for(int amountSold{}; inputFileStream >> amountSold >> month >> seller >> region;)
 		totalSalesAmount.at(region).at(seller - 1).at(month - 1) += amountSold;
@@ -40,7 +40,9 @@ void readDataFromFile() {
 
 void printResultsAndWriteThemInFile() {
 	std::ofstream outputFileStream;
-	outputFileStream.open("totalSalesAmount.txt", std::ios::out);
+	outputFileStream.open("totalSalesAmount.txt", std::ios::out); 
+	// ios::in allows input (read operations) from a stream.
+	// ios::out allows output (write operations) to a stream
 
 	std::array<std::string, MONTHS_IN_A_YEAR> months {
 		"Enero",
@@ -61,7 +63,6 @@ void printResultsAndWriteThemInFile() {
 		std::cout << "---" << "REGION " << region << "---" << std::endl;
 
 		for(int seller{}; seller < NUMBER_OF_SELLERS; seller++) {
-			std::cout << seller;
 			std::cout << "VENDEDOR " << (seller + 1) << std::endl;
 
 			for(int month{}; month < MONTHS_IN_A_YEAR; month++)
