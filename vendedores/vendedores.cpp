@@ -16,11 +16,18 @@ void openFileAndSendItToStandardOutput();
 
 int main(){
 
-
 	readDataFromFile();
 	openFileAndSendItToStandardOutput();
-	
 
+	int region{};
+	int salesSumBySeller;
+	const int NUMBER_OF_SELLERS_IN_FILE = totalSalesAmount.at(region).size();
+
+	for(int seller{}; seller < totalSalesAmount.at(seller).size(); seller++) 
+		for(int month{}; month < MONTHS_IN_A_YEAR; month++)
+			salesSumBySeller += totalSalesAmount.at(region).at(seller).at(month);
+	std::cout << "The average sale by region is: " << salesSumBySeller / totalSalesAmount.at(region).size(); 
+	
 }
 
 void readDataFromFile() {
@@ -30,7 +37,7 @@ void readDataFromFile() {
 	int month, seller, region{};
 
 	for(int amountSold{}; inputFileStream >> amountSold >> month >> seller >> region;)
-	totalSalesAmount.at(region).at(seller - 1).at(month - 1) += amountSold;
+		totalSalesAmount.at(region).at(seller - 1).at(month - 1) += amountSold;
 
 	inputFileStream.close();
 }
@@ -64,13 +71,10 @@ void openFileAndSendItToStandardOutput() {
 			for(int month{}; month < MONTHS_IN_A_YEAR; month++)
 				std::cout << "ventas en " << months.at(month) << ": $" << totalSalesAmount.at(region).at(seller).at(month) << std::endl;
 		}
-
 		std::cout << std::endl;
-
 	} 
 
 	outputFileStream.write(reinterpret_cast<const char*>(&totalSalesAmount), sizeof (totalSalesAmount));
-
   	outputFileStream.close();
 }
 
