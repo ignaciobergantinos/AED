@@ -11,17 +11,20 @@ using Sales = std::array<std::array<std::array<int, MONTHS_IN_A_YEAR>, NUMBER_OF
 Sales totalSalesAmount{};
 
 
+
 void readDataFromFile();
-void openFileAndSendItToStandardOutput();
+void sendDataToStandardOutputAndWriteDataInAFile();
 int calculateAverageSalesByAGivenRegion(int);
+
 
 
 int main(){
 
 	readDataFromFile();
-	openFileAndSendItToStandardOutput();
+	sendDataToStandardOutputAndWriteDataInAFile();
 	calculateAverageSalesByAGivenRegion(0);
 	
+
 }
 
 void readDataFromFile() {
@@ -36,7 +39,7 @@ void readDataFromFile() {
 	inputFileStream.close();
 }
 
-void openFileAndSendItToStandardOutput() {
+void sendDataToStandardOutputAndWriteDataInAFile() {
 	std::ofstream outputFileStream;
 	outputFileStream.open("totalSalesAmount.txt", std::ios::out);
 
@@ -81,9 +84,14 @@ int calculateAverageSalesByAGivenRegion(int region) {
 		for(int month{}; month < MONTHS_IN_A_YEAR; month++)
 			salesSumBySeller += totalSalesAmount.at(region).at(seller).at(month);
 
-	std::cout << "Average sale in region " << region << ": " << (salesSumBySeller / NUMBER_OF_SELLERS_IN_A_GIVEN_REGION);
+	std::cout << "Average sales in region " << region << ": " << (salesSumBySeller / NUMBER_OF_SELLERS_IN_A_GIVEN_REGION) << std::endl;
 	return (salesSumBySeller / NUMBER_OF_SELLERS_IN_A_GIVEN_REGION);
 }
+
+
+
+
+
 
 
 // compile g++ vendedores.cpp -o output -std=c++2a
