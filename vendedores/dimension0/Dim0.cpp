@@ -6,5 +6,5 @@ int main(){
     for(int amountSold{}; std::cin >> amountSold; )
         totalSalesAmount += amountSold;
 
-    std::cout << "Total Sales: " << totalSalesAmount;
+    std::cout << "Total Sales: " << totalSalesAmount; 
 }
