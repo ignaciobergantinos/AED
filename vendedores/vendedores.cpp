@@ -3,11 +3,13 @@
 #include <string>
 #include <fstream>
 
-
+const int MONTHS_IN_A_YEAR{12};
+const int NUMBER_OF_REGIONS{4};
+const int NUMBER_OF_SELLERS{3};
 
 int main(){
 
-	std::array<std::array<std::array<int,12>,3>,4> totalSalesAmount{};
+	std::array<std::array<std::array<int, MONTHS_IN_A_YEAR>, NUMBER_OF_SELLERS>, NUMBER_OF_REGIONS> totalSalesAmount{};
 
 	std::ifstream inputFileStream;
 	inputFileStream.open("TestVendedores.txt");
