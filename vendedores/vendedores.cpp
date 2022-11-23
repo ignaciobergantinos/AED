@@ -10,12 +10,10 @@ const int NUMBER_OF_SELLERS{3};
 using Sales = std::array<std::array<std::array<int, MONTHS_IN_A_YEAR>, NUMBER_OF_SELLERS>, NUMBER_OF_REGIONS>;
 Sales totalSalesAmount{};
 
-
-
 void readDataFromFile();
 void sendDataToStandardOutputAndWriteDataInAFile();
 int calculateAverageSalesByAGivenRegion(int);
-
+std::array<int, NUMBER_OF_REGIONS> getMaximimumSale();
 
 
 int main(){
@@ -23,7 +21,7 @@ int main(){
 	readDataFromFile();
 	sendDataToStandardOutputAndWriteDataInAFile();
 	calculateAverageSalesByAGivenRegion(0);
-	
+	getMaximimumSale();
 
 }
 
@@ -89,7 +87,18 @@ int calculateAverageSalesByAGivenRegion(int region) {
 }
 
 
+std::array<int, NUMBER_OF_REGIONS> getMaximimumSale() {
+	std::array<int, NUMBER_OF_REGIONS> maximumSale{};
 
+    for (int region{}; region < NUMBER_OF_REGIONS; region++)
+        for (int seller{}; seller < NUMBER_OF_SELLERS; seller++)
+            for (int month{}; month < MONTHS_IN_A_YEAR; month++) {
+                int sale = totalSalesAmount.at(region).at(seller).at(month);
+                if (sale > maximumSale.at(3))
+                    maximumSale = {region, seller, month, sale};
+            }
+    return maximumSale;
+}
 
 
 
