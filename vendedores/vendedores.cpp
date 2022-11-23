@@ -11,11 +11,31 @@ using Sales = std::array<std::array<std::array<int, MONTHS_IN_A_YEAR>, NUMBER_OF
 Sales totalSalesAmount{};
 
 void readDataFromFile();
-
+void openFileAndSendItToStandardOutput();
 
 
 int main(){
 
+
+	readDataFromFile();
+	openFileAndSendItToStandardOutput();
+	
+
+}
+
+void readDataFromFile() {
+	std::ifstream inputFileStream;
+	inputFileStream.open("TestVendedores.txt");
+
+	int month, seller, region{};
+
+	for(int amountSold{}; inputFileStream >> amountSold >> month >> seller >> region;)
+	totalSalesAmount.at(region).at(seller - 1).at(month - 1) += amountSold;
+
+	inputFileStream.close();
+}
+
+void openFileAndSendItToStandardOutput() {
 	std::ofstream outputFileStream;
 	outputFileStream.open("totalSalesAmount.txt", std::ios::out);
 
@@ -32,7 +52,7 @@ int main(){
 		"Octumbre",
 		"Noviembre",
 		"Diciembre"
- };
+ 	};
 
 	for(int region{}; region < NUMBER_OF_REGIONS; region++) {
 		std::cout << "---" << "REGION " << region << "---" << std::endl;
@@ -45,26 +65,13 @@ int main(){
 				std::cout << "ventas en " << months.at(month) << ": $" << totalSalesAmount.at(region).at(seller).at(month) << std::endl;
 		}
 
-	std::cout << std::endl;
+		std::cout << std::endl;
 
 	} 
 
 	outputFileStream.write(reinterpret_cast<const char*>(&totalSalesAmount), sizeof (totalSalesAmount));
 
   	outputFileStream.close();
-
-}
-
-void readDataFromFile() {
-	std::ifstream inputFileStream;
-	inputFileStream.open("TestVendedores.txt");
-
-	int month, seller, region{};
-
-	for(int amountSold{}; inputFileStream >> amountSold >> month >> seller >> region;)
-	totalSalesAmount.at(region).at(seller - 1).at(month - 1) += amountSold;
-
-	inputFileStream.close();
 }
 
 // g++ vendedores.cpp -o output -std=c++2a
