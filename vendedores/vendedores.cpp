@@ -40,7 +40,7 @@ void readDataFromFile() {
 
 void printResultsAndWriteThemInFile() {
 	std::ofstream outputFileStream;
-	outputFileStream.open("totalSalesAmount.txt", std::ios::out); 
+	outputFileStream.open("salida.txt", std::ios::out); 
 	// ios::in allows input (read operations) from a stream.
 	// ios::out allows output (write operations) to a stream
 
