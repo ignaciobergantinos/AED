@@ -11,7 +11,7 @@ using Sales = std::array<std::array<std::array<int, MONTHS_IN_A_YEAR>, NUMBER_OF
 Sales totalSalesAmount{};
 
 void readDataFromFile();
-void sendDataToStandardOutputAndWriteDataInAFile();
+void printResultsAndWriteThemInFile();
 void printMaximimumSale();
 int calculateAverageSalesByAGivenRegion(int);
 std::array<int, NUMBER_OF_REGIONS> getMaximimumSale();
@@ -20,9 +20,8 @@ std::array<int, NUMBER_OF_REGIONS> getMaximimumSale();
 int main(){
 
 	readDataFromFile();
-	sendDataToStandardOutputAndWriteDataInAFile();
+	printResultsAndWriteThemInFile();
 	calculateAverageSalesByAGivenRegion(0);
-
 	printMaximimumSale();
 
 }
@@ -39,7 +38,7 @@ void readDataFromFile() {
 	inputFileStream.close();
 }
 
-void sendDataToStandardOutputAndWriteDataInAFile() {
+void printResultsAndWriteThemInFile() {
 	std::ofstream outputFileStream;
 	outputFileStream.open("totalSalesAmount.txt", std::ios::out);
 
