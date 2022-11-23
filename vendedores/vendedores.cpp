@@ -12,6 +12,7 @@ Sales totalSalesAmount{};
 
 void readDataFromFile();
 void sendDataToStandardOutputAndWriteDataInAFile();
+void printMaximimumSale();
 int calculateAverageSalesByAGivenRegion(int);
 std::array<int, NUMBER_OF_REGIONS> getMaximimumSale();
 
@@ -21,7 +22,8 @@ int main(){
 	readDataFromFile();
 	sendDataToStandardOutputAndWriteDataInAFile();
 	calculateAverageSalesByAGivenRegion(0);
-	getMaximimumSale();
+
+	printMaximimumSale();
 
 }
 
@@ -100,7 +102,11 @@ std::array<int, NUMBER_OF_REGIONS> getMaximimumSale() {
     return maximumSale;
 }
 
+void printMaximimumSale(){
 
+    std::array<int, NUMBER_OF_REGIONS> maximumSale = getMaximimumSale();
+    std::cout << "La venta máxima fue en la región: " << maximumSale.at(0) << ". Por el vendedor: " << maximumSale.at(1) << ". En el mes: " << maximumSale.at(2) << ". Y fue de: $" << maximumSale.at(3) << '.';
+}
 
 
 // compile g++ vendedores.cpp -o output -std=c++2a
